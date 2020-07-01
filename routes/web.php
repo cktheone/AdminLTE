@@ -15,12 +15,22 @@
     return view('index');
 });*/
 
-Route::get('/', 'HomeController@home');
+Route::get('/', function (){
+    return view('page.page1');
+} );
 
-Route::get('/register', 'AuthController@register');
+Route::get('/data-tables', function (){
+    return view('page.page2');
+} );
 
-//Route::get('/welcome', 'AuthController@welcome');
+// Route::get('/register', 'AuthController@register');
 
-Route::post('/welcome', 'AuthController@welcome');
+// Route::get('/welcome', 'AuthController@welcome');
+
+// Route::post('/welcome', 'AuthController@welcome');
+
+Route::get('/master', function () {
+    return view('layout.master');
+});
 
 
