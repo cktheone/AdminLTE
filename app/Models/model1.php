@@ -9,8 +9,8 @@ public static function get_pertanyaan(){
     return $ask;
 }
 
-public static function get_pertanyaan_by_id($id_pertanyaan){
-    $pertanyaan = DB::table('tblpertanyaan')->where('pertanyaan_id', $id_pertanyaan)->get();
+public static function get_pertanyaan_by_id($id){
+    $pertanyaan = DB::table('tblpertanyaan')->where('id', $id)->first();
     return $pertanyaan;
 }
 
@@ -20,4 +20,22 @@ public static function save_pertanyaan($data){
     return $simpan;
 }
 
+public static function update($id, $request){
+    $updatepertanyaan = DB::table('tblpertanyaan')
+                        ->where('id', $id)
+                        ->update([
+                            'judul' => $request["judul"],
+                            'isi' => $request["isi"],
+                            'created_at' => $request["created_at"],
+                            'updated_at' => $request["updated_at"]
+                        ]);
+    return $updatepertanyaan;
+}
+ public static function destroy($id)
+ {
+     $deleted = DB::table('tblpertanyaan')
+                    ->where ('id',$id)
+                    ->delete();
+        return redirect('/pertanyaan');
+ }
 }

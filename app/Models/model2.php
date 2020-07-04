@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 class model2 {
 public static function get_satupertanyaan($id_pertanyaan)
 {
-    $pertanyaan = DB::table('tblpertanyaan')->where('id', $id_pertanyaan)->get();
+    $pertanyaan = DB::table('tblpertanyaan')->where('id', $id_pertanyaan)->first();
     return $pertanyaan;
 }
 

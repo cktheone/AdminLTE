@@ -31,7 +31,7 @@ class JawabanController extends Controller
         $data = $request->all();
         unset($data["_token"]);
         model2::save_jawaban($data);
-        return redirect('/pertanyaan');
+        return redirect('/jawaban/'.$pertanyaan_id);
 
     }
 }
