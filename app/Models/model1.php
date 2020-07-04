@@ -9,22 +9,13 @@ public static function get_pertanyaan(){
     return $ask;
 }
 
-public static function get_satupertanyaan($data)
-    $pertanyaan = DB::table('tblPertanyaan')->where('id', '=', $data)->get();
+public static function get_pertanyaan_by_id($id_pertanyaan){
+    $pertanyaan = DB::table('tblpertanyaan')->where('pertanyaan_id', $id_pertanyaan)->get();
     return $pertanyaan;
+}
 
 public static function save_pertanyaan($data){
     $simpan = DB::table('tblpertanyaan')->insert($data);
-
-    return $simpan;
-}
-public static function get_jawaban(){
-    $question = DB::table('tbljawaban')->get();
-    return $question;
-}
-
-public static function save_jawaban($data){
-    $simpan = DB::table('tbljawaban')->insert($data);
 
     return $simpan;
 }

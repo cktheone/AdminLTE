@@ -18,7 +18,8 @@
           <label for="exampleInputPassword1">Isi Pertanyaan</label>
           <textarea class="form-control" rows="5" name="isi" placeholder="Enter ..."></textarea>
         </div>
-        
+        <input hidden name="created_at" value="{{ \Carbon\Carbon::now() }}">
+        <input hidden name="updated_at" value="{{ \Carbon\Carbon::now() }}">
       </div>
       <!-- /.card-body -->
 
@@ -34,8 +35,8 @@
         <th style="width: 10px">#</th>
         <th>Judul</th>
         <th>Pertanyaan</th>
-        <th>Dibuat</th>
-        <th>Diupdate</th>
+        <th>Jawaban</th>
+        <th>Lihat Jawaban</th>
       </tr>
     </thead>
     <tbody>
@@ -44,8 +45,21 @@
             <td> {{ $key+1 }}</td>   
             <td> {{ $data->judul }}</td>
             <td> {{ $data->isi }}</td>
-            <td> {{ $data->created_at }}</td>
-            <td> {{ $data->updated_at }}</td>
+            <td> 
+              <form action="{{ url('/jawaban/'.$data->id) }}" method="POST">
+                {{ csrf_field() }}
+                <input type="text" name="jawaban">
+                <input hidden name="votes" value="">
+                <input hidden name="pertanyaan_id" value="{{ $data->id }}">
+                <input hidden name="created_at" value="{{ \Carbon\Carbon::now() }}">
+                <input hidden name="updated_at" value="{{ \Carbon\Carbon::now() }}">
+                <button type="submit" class="btn btn-success"> jawab </button>
+              </form>
+            </td>
+            <td> <a href="{{ url('/jawaban/'.$data->id) }}">
+              <button class="btn btn-warning"> Lihat Jawaban</button>
+              </a>  
+            </td>
         </tr> 
         @endforeach
     </tbody>
