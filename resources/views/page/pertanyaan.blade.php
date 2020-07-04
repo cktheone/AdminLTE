@@ -18,8 +18,7 @@
           <label for="exampleInputPassword1">Isi Pertanyaan</label>
           <textarea class="form-control" rows="5" name="isi" placeholder="Enter ..."></textarea>
         </div>
-        <input type="hidden" name="tgl_dibuat" value="">
-        <input type="hidden" name="tgl_diperbarui" value="">
+        
       </div>
       <!-- /.card-body -->
 
@@ -45,8 +44,8 @@
             <td> {{ $key+1 }}</td>   
             <td> {{ $data->judul }}</td>
             <td> {{ $data->isi }}</td>
-            <td> {{ $data->tgl_dibuat }}</td>
-            <td> {{ $data->tgl_diperbarui }}</td>
+            <td> {{ $data->created_at }}</td>
+            <td> {{ $data->updated_at }}</td>
         </tr> 
         @endforeach
     </tbody>

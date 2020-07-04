@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTblPertanyaanTable extends Migration
+class CreateJawabanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +13,13 @@ class CreateTblPertanyaanTable extends Migration
      */
     public function up()
     {
-        
-        Schema::create('tblPertanyaan', function (Blueprint $table) {
+        Schema::create('tblJawaban', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('judul');
-            $table->string('isi');
+            $table->string('jawaban');
+            $table->tinyInteger('votes');
             $table->timestamps();
+            $table->unsignedInteger('pertanyaan_id');
+            $table->foreign('pertanyaan_id')->references('id')->on('tblpertanyaan');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateTblPertanyaanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tblPertanyaan');
+        Schema::dropIfExists('tblJawaban');
     }
 }

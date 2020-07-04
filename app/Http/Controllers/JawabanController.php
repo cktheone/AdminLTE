@@ -18,8 +18,9 @@ class JawabanController extends Controller
   
     public function index()
     {
+        $pertanyaan = model1::get_satupertanyaan();
         $question = model1::get_jawaban();
-        return view ('page.jawaban', compact('question'));
+        return view ('page.jawaban', compact('question'), compact('pertanyaan'));
     }
 
     public function create()
